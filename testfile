@@ -12,3 +12,18 @@ login to server/VM/cloud instance. create one directory and go inside it.
 # git remote add origin <central git url>
 # git push -u origin master (enter username & password)
 
+login to server/VM/cloud instance. - 2nd developer, create one directory and go inside it.
+
+# git init
+# git remote add origin <central git url>
+# git pull -u origin master (enter username & password)
+# git log
+# git show <commit_id>
+# now add some code in file
+# git status
+# git add .  or git add file_name
+# git commit -m "update from 2nd developer"
+# git status
+# git log
+# git show <commit_id>
+# git push -u origin master (enter username & password)
