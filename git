@@ -1,0 +1,271 @@
+What is GIT: Git is a Source code management tool, where we can store source code onto centralized repository server.
+
+ 
+
+Before GIT: - before git there had one version control system i.e. Centralized Version Control System used for source code management. In CVCS developers write their code on to local system and push code to the one central repository server which is at remote location. In CVCS developer needs update their code on central repository so other developers can track and cvcs maintain their versions on repository. It needs internet connection to update code on central repository because it cannot store locally. 
+In a centralized version control system (CVCS), a server acts as the main repository which stores every version of code. Using centralized source control, every user commits directly to the main branch, so this type of version control often works well for small teams, because team members have the ability to communicate quickly so that no two developers want to work on the same piece of code simultaneously.
+Centralized source control systems, such as CVS, Perforce, and SVN, require users to pull the latest version from the server to download a local copy on their machine. Contributors then push commits to the server and resolve any merge conflicts on the main repository.
+As a client-server model, a centralized workflow enables file locking so that any piece of the code that’s currently checked out will not be accessible to others, ensuring that only one developer can contribute to the code at a time. Team members use branches to contribute to the central repository, and the server will unlock files after merges.
+               
+
+Drawbacks of CVCS
+1) it is not locally available, means you always need to be connected to a network to perform any action.
+2) since everything is centralized if central server gets failed you will loss entire data. Eg. SVN tool
+3) Slow speed delays development - Centralized version control system users often have a difficult time branching quickly, because users must communicate with the remote server for every command, which slows down code development.
+
+Distributed Version Control System: -
+DVCS is a version control system where all codes from central repository server copied to local repo of developer’s computer. so developers can pull code from server to local and update, merge, commit locally, no need to push on central server every time.
+and maintain full history of version what changes are done from developer’s after push on server.
+In DVCS, every contributor has a local copy or clone of the main repository i.e. everyone maintain a local repository of their own which contains all the files & metadata present in main repository.
+
+A distributed version control system (DVCS) is a type of version control where the complete source code including its full version history is mirrored/copied on every developer's computer.
+Changes to files are tracked between computers.
+
+A distributed version control system (DVCS) brings a local copy of the complete repository to every team member’s computer, so they can commit, branch, and merge locally.
+
+Distributed source code management systems, such as Git mirror the repository and its entire history as a local copy on individual hard drives.
+
+         
+
+
+Difference between CVCS and DVCS:-
+CVCS =  1) In CVCS, a client needs to get local copy of source from server, do the changes and commit those changes to the central source on server.
+2) CVCS is easy to learn and setup.
+3) working on branches is difficult in cvcs, developers oftenly face merge conflict.
+4) cvcs system do not provide offline access.
+5) cvcs is slower as every cmd need to communicate with server.
+6) if cvcs server goes down, developers cannot work.
+
+DVCS = 1) In dvcs each client can have local repo/branch as well as complete history on it. clients need to push changes to branch which will then be pushed to server repository.
+2) DVCS systems are difficult for beginners, multiple cmd needs to be remembered.
+3) working on branches is easier in dvcs, developers face less merge conflict.
+4) dvcs system are working fine on offline mode as a client copies entire repository on their local machine.
+5) dvcs is faster as mostly user deals with local copy without hitting server every time.
+6) if dvcs server goes down, developer can work using their local copies.
+--------------------------------------------------------------------------------------------------------------------------
+What is Git = Git is the most commonly used version control system. Git tracks the changes you make to files, so you have a record of what has been done, and you can revert to specific versions should you ever need to. Git also makes collaboration easier, allowing changes by multiple people to all be merged into one source. 
+
+Git is a DevOps tool used for source code management. It is a free and open-source version control system used to handle small to very large projects efficiently. 
+
+Git is a version control system used for tracking changes in computer files. It is generally used for source code management in software development.
+-	Git is used to tracking changes in the source code
+-	The distributed version control tool is used for source code management
+-	It allows multiple developers to work together
+-	It supports non-linear development through its thousands of parallel branches
+
+Installing Git with Yum on CentOS
+$ sudo yum update
+$ sudo yum install git -y
+$ git --version   - verify the version of installed Git 
+
+Configuring Git = git is installed, now you will need to set up your personal info which will be used when you commit any changes to your code.
+$ git config --global user.name "Your Name"
+$ git config --global user.email "youremail@yourdomain.com"
+$ git config --list  -  to you can list all of the configuration settings.
+The above settings are stored in the global configuration ~/.gitconfig file. 
+To make any additional changes to this file, use git config command or edit the file manually.
+
+Git-Three Stages -Working Directory, staging area and Local Repository 
+
+Stages of Git / Workflow = first we have to install git on server and after installation create a directory folder with your choice name. then go to repository folder and run the git init command inside folder then it will initialize and create .git folder inside it and convert directory into git local repository.
+Then there is three logical stages are created.
+1) working directory = In first stage we are writing/developers our code which is called working directory.
+2) staging area = In second stage we are adding developed code into staging area (freeze code with save) where we can sort out what we want to commit called staging area.
+3) Local Repo = In third stage where we can save/commit written code which is available in staging area to save in local repo call local repo.
+
+-	Commit means we can save code on local repo or snapshot of code at a particular time which we can retrieves in future for debug purpose.
+-	by default the master branch will be created in local repo after we commit code and is save in master branch of local repo.
+-	for every commit there will a commit id assigned to it, so we can easily retrieve using this id. also we can attach tag to code at the time of commit so we easily identify/check commit from multiple commits.
+-	snapshot/commit is incremental means when we take snapshot every time it will take current code snap so the data which is present in repo at the time of commit is save there.
+-	After code commit/save in local repo our code will be ready to push into central repository, so we can push code into central repository by using git push cmd.
+-	When multiple developers working on project then, after code pushed on central repo other developers can pull code on to their local machine and continue work on it and push code on central repository.
+-	Every time when developers commit and push code into central repository it has different commit id so they can easily retrieve code for particular time when required.
+
+    
+
+What is Versioning = before versioning when we developed any code, we have to save it on local machine as version 1, after some days we need to developed new code in existing code, so we write new code and save this into different folder with version 2, or daily we can develop additional code and save into different folder, so whole code will be copied into new folder which leads to increase space. 
+To overcome this versioning is used, in versioning when we write a new code in existing code in version 1 and save it will only save the new code from where we start to develop in file into version 2. which will reduce code size.
+
+Repository = Repository is a place where we have all your code or kind of folder on server.
+It is a kind of folder related to the one product.
+changes are personal to that particular repository. means when we u are working on multiple repositories then changes done in one repository is affect only current directory. not all  others.
+
+Server =  It stores all repositories. means multiple project repository.
+                It contains metadata also, means commit id, timestamp, who done commit etc.
+
+Working Directory = Where you see files physically and do modification. At a time you work on particular branch.
+--------------------------------------------------------------------------------------------------------------------------
+-	In other CVCS, developers generally makes modifications and commit their changes directly to the repository.
+-	But git uses a different strategy, Git does not track each and every modified file, whenever you do commit operation, git looks for the files present in the staging area, only those files are present in staging area are considered for commit and not all the modified files. 
+
+Commit = commit/save changes in repository. store changes in repository, you will get one commit-ID.
+it is 40 alpha numeric characters. 
+it uses SHA-1 checksum concept, even if you change one dot, commit-id will get change.
+it actually helps you to track changes. commit is also named as SHA1 hash.
+
+Git provides integrity. 
+SHA1 - convert alphabets to binary for encryption.
+
+Commit-ID/Version-ID/version = Reference to identify each change, to identify who changed files.
+Tags = Tags assign a meaningful name with a specific version in the repository.
+once a tag is created for a particular save, even if you create a new commit, it will not be updated. by using tags we can easily identify when and what commit changes done.
+
+Snapshots = represents some data of particular time.
+it is always incremental i.e. it stores the changes (appended data) only not entire copy. 
+
+Push :- Push operations copies changes from a local repository to a remote or central repository. This is used to store the changes permanently into the git repository.
+Pull :- Pull operation copies the changes from a remote repository to a local machine.
+the pull operation is used for synchronisation between two repos.
+
+working directory (Add) -> Staging area (commit) -> Local repo (push) -> Github 
+
+Branch =  Product is same, so one repository but different task. each task has one separate branch. Finally merges (code) all branches. useful when you want to work parallelly.
+can create one branch on the basis of another branch. changes are personal to the particular branch. default branch is master.
+File created in workspace will be visible in any of the branch workspace until you commit. once you commit, then that file belongs to that particular branch.
+
+Advantages of git = Free and open source.
+-	Fast and small -> as most of the operations are performed locally, there is is fast.
+-	Security -> git uses a common cryptographic hash function called secure hash function (SHA1) to name and identify
+-	objects within its database.
+-	No need of powerful hardware
+-	Easier branching -> if we create a new branch, it will copy all the codes to the new branch.
+--------------------------------------------------------------------------------------------------------------------------
+How to add, commit in git and push code to github and pull code from github.
+
+login to server/VM/cloud instance. create one directory and go inside it.
+# git init
+# touch myfile (write some code)
+# git status
+# git add .  / git add file_name
+# git commit -m "1st commit from developer"
+# git status
+# git log
+# git show <commit_id>
+# git remote add origin <central git url>
+# git push -u origin master (enter username & password)
+--------------------------------------------------------------------------------------------------------------------------
+login to server/VM/cloud instance. - 2nd developer, create one directory and go inside it.
+
+# git init
+# git remote add origin <central git url>
+# git pull -u origin master (enter username & password)
+# git log
+# git show <commit_id>
+# now add some code in file
+# git status
+# git add .  or git add file_name
+# git commit -m "update from 2nd developer"
+# git status
+# git log
+# git show <commit_id>
+# git push -u origin master (enter username & password)
+--------------------------------------------------------------------------------------------------------------------------
+git log -1  - shows last 1 commit
+git log -2  - shows last 2 commit
+----------------------------------------------
+git log  --oneline = all commit in one line
+git log  --grep "word" = to search commit by word specified while commit
+===========================================================================
+To ignore some files while committing, create one hidden file .gitignore and enter file format which you want to ignore.
+for eg. # vi .gitignore
+        -> *.css
+        -> *.java
+# git add .gitignore
+# git commit -m "latest update exclude css"
+# git status
+create some text, java and CSS files and add them by running "git add", for e.g. file.txt file1.txt file2.java file3.css
+# ls
+# git status
+# git add
+# git status
+# git commit -m "my text file only"
+===========================================================================
+Git Branch:-
+
+ 
+
+The diagram above visualizes a repository with two isolated lines of development, one for a little feature and one for a longer-running features by developing them is branches, it’s not only possible to work on both of them in parallel, but it also keeps the main master branch full of error.
+When we have running/production code in repo and want to develop new feature or add new feature, but we cannot work in existing repo code because it is a running code, so we can create new branch from existing master branch and trying to add new feature into or after successfully developed and test new code then we can merge this code with master branch from new branch. so, we can parallelly work on different task.   
+
+when new branch created, first time data from existing branch will copied to new branch. and then work done in new branch will be visible in this branch only until we merge code with master one.
+merge code from new branch with master branch will only copy new developed code not entire existing code.
+-	Each Task has one separate branch.
+-	after done with code, Merge other branches with master branch.
+-	this concept is useful for parallel development.
+-	you can create any no. of branches.
+-	changes are personal to that particular branch.
+-	 Default branch is master.
+-	Files created in workspace will be visible in any of the branch workspace until you commit, after commit then that file belongs to that particular branch.
+-	when created new branch, data of existing branch copied to a new branch.
+
+# git branch - to see list of available branches in repository.
+# git branch branch_name  - to create new branch.
+# git checkout branch_name(branch name in which we want to work) - to switch branch or to change branch.
+# git branch -d branch_name  - after code merge with master and does not required branch.
+# git branch -D branch_name  - to forcefully delete a branch even working in branch.
+
+Merge = You can't merge branches of different repositories. we can merge only branches available in local repository only. We use pulling mechanism to merge branches.
+# git merge branch_name (branch we want to merge)
+# git log - to verify the merge.
+# git push origin master - To push to central repo like github.
+
+Git Conflict = when same file has different content in different branches, if you do merge, conflict occurs(resolve conflict then add and commit)
+-	Conflict occurs when you merge branches.
+-	when we have same file in different branch and the content in file of one branch is same and content in file of second branch is same with addition it will not conflict.
+-	but when content is different then, it confuse to which one will add first and which one will add second and conflict occurs.
+-	to resolve conflict, edit file after merge and correct single word, git will understand what order we want in file.
+-	after editing file, no need to merge it again. simply add the file in staging area and commit.
+
+Git Stashing = suppose you are implementing a new feature for your product. your code is in progress and suddenly a customer escalation comes. 
+-	because of this, you have to keep aside your new feature work for few hours.
+-	you cannot commit your partial code and also cannot throw away your changes. so you need some temporary storage, where you can store your partial changes and later on commit it.
+-	To stash an item(only applies to modified files not new files)
+-	when we stashed item and again get in workspace the data still available in stash also. 
+# git stash - To stash an item.
+# git stash list - to see a stashed item list - the latest stashed file number as {0} and then older one in order. 
+# git stash apply stash@{0} - To apply stash items(to get back file to workspace)
+then you can add and commit. after done this we can clear stash items.
+git stash clear - To clear stash items.
+--------------------------------------------------------------------------------------------------------------------------
+GIT RESET = git reset is a powerful command that is used to undo local changes to the state of a git repo.
+# git reset <filename> - To reset staging area.
+# git reset .
+# git reset --hard  -  To reset the changes from both working directory and staging area at a time. 
+
+If we add files in staging area but want to do changes or don't want to commit then we can do reset, which delete files from staging area.
+git reset = before commit
+git revert = after commit
+-------------------------------------------------------------------------------------------------------------------------
+
+GIT REVERT = The git revert command helps you to undo an existing commit.
+-	it does not delete any data in this process instead rather git creates a new commit with the included files reverted to their previous state.
+-	so, your version control history moves forward while the state of your files moves backward.
+-	revert is done on public file and reset is done on private file.
+-	when we run git revert cmd it will revert code with new commit id.
+# git status
+# cat >newfile
+# git add .
+# git commit -m "committed"
+# git log --oneline
+# git revert <commit-id>
+after running revert cmd one file open and enter message for revert reason then save file. 
+-----------------------------------------------------------------------------------------------------------------------
+How to remove Untracked files = untracked files are those files which created in workspace but never used and add, committed so to remove this file, use below command.
+# git clean -n  - run dry run to see untracked files.
+# git clean -f  - forcefully delete
+TAG = Tag Operation allows giving meaningful names to a specific version in the repository.
+we can give a tag to a version so that it can identify easily when used it frequently.
+# git tag -a <tag_name> -m <message>  <commit-id>  -  To apply tag.
+# git tag  - To see the list of tags
+# git show <tag_name>  - To see particular commit content by using tag (we can see it also by commit-id, but tag is easy to remember)
+# git tag -d <tag_name - To delete a tag
+--------------------------------------------------------------------------------------------------------------------------
+Github clone:-
+-	open github website
+-	login and choose existing repository.
+-	now go to your linux machine and run command.
+-	git clone <url of the github repo> - It creates a local repo automatically in m/c with the same name as in the github account.
+--------------------------------------------------------------------------------------------------------------------------
+- we can do same work on github as doing in git on linux m/c as command-line.
+- On github once code write done in other branch and want to merge with master, then first pulling request generated to check/test for any error/conflict with base branch then merging will done if no issue there.
+===========================================================================
