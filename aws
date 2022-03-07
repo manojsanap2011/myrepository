@@ -1,0 +1,21 @@
+1) Termination protection id turned off by default, you can turn it on to protect against accidental termination.
+
+2) When you terminate an instance, by default its root EBS volume will also delete.
+
+3) EBS root volumes can't be encrypted, you can use some third-party s/w to encrypt the root volume lke bit locker etc. bit additional volumes can be encrypted.
+
+IAM =
+-------------------
+1) IAM is global , it does not apply to regions
+2) when you first setup your AWS account, the root account is creare which is having full access.
+3) New users have No permissions when first created.
+4) its recommended to setup MFA authentication on your root account.
+5) you can customized your own password rotation policies.
+
+1) IAM user limit is 5000 for AWS account. you can add upto 10 users at one time.
+2) you are also limited to 300 groups per AWS account.
+3) you are limites to 1000 IAM Role under AWS account.
+4) Default limits of Managed policies attached to an IAM role and IAM user is 10.
+5) IAM user can be a member of 10 group (max)
+6) we can assign two access keys (max) to an IAM users.
+These are the default limits by AWS , we can exceed by requesting to AWS.
