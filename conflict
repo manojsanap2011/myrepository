@@ -1,0 +1,11 @@
+IAM Terms = 
+1) Principal
+2) Request
+3) Authentication
+4) Authorization
+5) Action/Operations
+6) Resources
+S3 Storage
+-----------------------------------
+S3 - Simple Storage service - object base.
+EBS - Elastic Block Storage - block base.
